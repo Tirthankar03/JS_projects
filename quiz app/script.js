@@ -53,16 +53,28 @@ function loadQuiz() {
     
 }
 
+function getSelected() {
+    // console.log('hio');
+    const answers = document.querySelectorAll('.answer');
+
+    answers.forEach(answer => {
+        console.log(answer.checked);
+    });
+}
+
 
 submitBtn.addEventListener('click', () =>{
     currentQuiz++;
 
-    if (currentQuiz < quizData.length) {
-        loadQuiz();
-    }else{
-        //TODO: Show results
-        alert("you have finished the quiz!")
-    }
+    getSelected();
+
+
+    // if (currentQuiz < quizData.length) {
+    //     loadQuiz();
+    // }else{
+        
+    //     alert("you have finished the quiz!")
+    // }
 
 
 
