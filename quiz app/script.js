@@ -45,6 +45,9 @@ let score = 0;
 loadQuiz(); //initialize 
 
 function loadQuiz() {
+    //option deselected after every call
+    deselectAnswers();
+
     const currentQuizData = quizData[currentQuiz]; 
     questionEl.innerHTML = currentQuizData.question; //Inserting the question from the array of objects into our (Question) title space -> by referering the (Title) element to (questionEl)
     a_text.innerText = currentQuizData.a;
@@ -68,20 +71,30 @@ function getSelected() {
     return answer;
 }
 
+function deselectAnswers() {
+    //this is actually really easy to implement
+    //just copy and paste the code from getSelected 
+    //the goal is to remove the selection when the deselectAnswers() is called
+    answerEls.forEach(any_var_El_x => {
+        any_var_El_x.checked = false;
+    });
+    //we call the fxn in loadQuiz()
+}
 
 submitBtn.addEventListener('click', () =>{
     //the returned value from fxn is stored in the local var(answer unironically)
     const answer = getSelected();
+
     //we log the answer and find that the console displays the option(id) that we selected
         //still the logic for identifying correct answer and shit is not written yet
     console.log(answer);
 
-    
+    //check if the returned answer(id) is equal to x.correct from the QuizData[] array
     if (answer) {
         if (answer === quizData[currentQuiz].correct) {
-            score++;
+            score++; //score is +1 if correct
         }
-        currentQuiz++;
+        currentQuiz++; //we go to the next quiz
 
         if (currentQuiz < quizData.length) {
             loadQuiz();
