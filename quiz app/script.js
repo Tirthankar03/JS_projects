@@ -30,6 +30,7 @@ const quizData = [{
 ];
 
 const questionEl = document.getElementById('question');
+const answerEls = document.querySelectorAll('.answer');
 const a_text = document.getElementById('a_text');
 const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
@@ -39,6 +40,7 @@ const submitBtn = document.getElementById('submit');
 
 
 let currentQuiz = 0;
+let score = 0;
 
 loadQuiz(); //initialize 
 
@@ -54,27 +56,41 @@ function loadQuiz() {
 }
 
 function getSelected() {
-    // console.log('hio');
-    const answers = document.querySelectorAll('.answer');
+    let answer = undefined;
 
-    answers.forEach(answer => {
-        console.log(answer.checked);
+    answerEls.forEach(any_var_El_x => {
+        if (any_var_El_x.checked) {
+            answer = any_var_El_x.id;
+        }
     });
+    //whatever we id we select(checked = true), we store the id of x in a var(answer) 
+    //the fxn returns the value of the var(answer)
+    return answer;
 }
 
 
 submitBtn.addEventListener('click', () =>{
-    currentQuiz++;
+    //the returned value from fxn is stored in the local var(answer unironically)
+    const answer = getSelected();
+    //we log the answer and find that the console displays the option(id) that we selected
+        //still the logic for identifying correct answer and shit is not written yet
+    console.log(answer);
 
-    getSelected();
+    
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+        currentQuiz++;
 
-
-    // if (currentQuiz < quizData.length) {
-    //     loadQuiz();
-    // }else{
-        
-    //     alert("you have finished the quiz!")
-    // }
+        if (currentQuiz < quizData.length) {
+            loadQuiz();
+        }else{
+            
+            alert("you have finished the quiz!")
+        }
+    }
+    
 
 
 
