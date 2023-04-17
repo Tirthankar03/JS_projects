@@ -28,7 +28,7 @@ const quizData = [{
     correct: 'a' 
 }
 ];
-
+const quiz = document.getElementById('quiz');
 const questionEl = document.getElementById('question');
 const answerEls = document.querySelectorAll('.answer');
 const a_text = document.getElementById('a_text');
@@ -99,8 +99,7 @@ submitBtn.addEventListener('click', () =>{
         if (currentQuiz < quizData.length) {
             loadQuiz();
         }else{
-            
-            alert("you have finished the quiz!")
+            quiz.innerHTML = `<h2>You answered correctly at ${score}/${quizData.length} questions</h2>`;
         }
     }
     
