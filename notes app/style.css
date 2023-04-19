@@ -12,6 +12,10 @@ body {
     margin: 0;
 }
 
+h2{
+    margin: 0;
+}
+
 .notes{
     background-color: #fff;
     width: 400px;
@@ -35,19 +39,23 @@ body {
 }
 
 .notes .main{
+    background-color: #fff;
     /* display: none;  brute force then realising there's a better way to do it*/ 
+    height: 400px;
     width: 100%;
-    height: 100%;
+    /* overflow: hidden; done as .main got the margin of the first child */
+    overflow: hidden;
 }
 /* text area is inside main now */
 .notes textarea{ 
     outline: none;
     font-family: inherit;
     border: none;
+    height: 400px;
     width: 100%;
-    height: 100%;
 }
 
+/* .hidden class is made only for the .notes so we are able to toggle and place it in textarea or main according to our needs */
 .notes .hidden{
     display: none;
 }

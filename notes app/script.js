@@ -17,3 +17,14 @@ editBtn.addEventListener('click',() => {
     textArea.classList.toggle('hidden'); 
 
 });
+
+
+//here JS destructuring has been used
+//the { value } is basically a property that has the value of the input
+//we renamed "value" to "keyboardInput" and used in in marked()
+textArea.addEventListener('input',(x) => {
+    const { value: keyboardInput } = x.target; //x denotes the input from the user and we are just storing the input into our var 'value'
+    main.innerHTML = marked(keyboardInput);
+});
+
+
