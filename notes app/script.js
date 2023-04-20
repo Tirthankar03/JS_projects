@@ -1,13 +1,19 @@
 
 const addBtn = document.getElementById('add');
 
+const notes = JSON.parse(localStorage.getItem("notes"));
 
+if (notes) {
+    notes.forEach((x) => {
+        addNewNote(x);
+    });
+}
 
 addBtn.addEventListener('click', () => {
     addNewNote();
 });
 
-function addNewNote(){
+function addNewNote(text = ""){
     //creating a new div nameed note
     const noteNew = document.createElement('div'); 
     noteNew.classList.add('note'); //adding a class to note
@@ -36,7 +42,8 @@ const deleteBtn = noteNew.querySelector('.delete');
 const main = noteNew.querySelector('.main');
 const textArea = noteNew.querySelector('textarea');
 
-
+textArea.value = text;
+main.innerHTML = marked(text);
 
 
 editBtn.addEventListener('click',() => {
@@ -51,13 +58,27 @@ editBtn.addEventListener('click',() => {
 textArea.addEventListener('input',(x) => {
     const { value: keyboardInput } = x.target; //x denotes the input from the user and we are just storing the input into our var 'value'
     main.innerHTML = marked(keyboardInput);
+    updateLS();
 });
 
 deleteBtn.addEventListener('click',() => {
     noteNew.remove();
+    updateLS();
 });    
 
 
+}
+
+function updateLS() {
+    const notesTextareaAll = document.querySelectorAll("textarea");
+
+    const notes = []; //a new empty array of name "notes" is created
+
+    notesTextareaAll.forEach((x) => {
+        notes.push(x.value);
+    }); //adding all the textarea to the notes array
+
+    localStorage.setItem("notes", JSON.stringify(notes)); //the array is convertedt to json format
 }
 
 
