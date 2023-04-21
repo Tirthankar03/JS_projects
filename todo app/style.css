@@ -27,15 +27,46 @@ h1{
 
 form{
     width: 23rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.17);
 }
 
 .input{
     padding: 1rem;
-    width: 100%;
     font-size: 1.5rem;
+    width: 100%;
+    border: none;
+
 }
 
 .input::placeholder{
     color: #b5b5b5;
-    
+
+}
+
+.todos{
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 23rem;
+
+
+}
+
+.todos li{
+    border-top: 1px solid #e5e5e5;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.todos .completed {
+    color: #b6bb6b;
+    text-decoration: line-through;
+}
+
+small{
+    color: #b5b5b5;
+    margin-top: 3rem;
+
 }
