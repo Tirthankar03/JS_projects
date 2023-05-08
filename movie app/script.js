@@ -12,12 +12,29 @@ async function getMovies() {
     console.log(respData);
 
     respData.results.forEach(movie =>{
-        const img = document.createElement("img");
-//adding the poster path with the common source
-        img.src = IMGPATH + movie.poster_path;
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
 
-        document.body.appendChild(img);
+        movieEl.innerHTML = `
+            <img src="${IMGPATH + movie.poster_path}" alt="${movie.title}" srcset="">
+            <div class="movie-info">
+                <h3>${movie.title}</h3>
+                <span>${movie.vote_average}</span>
+            </div>
+`;
+//         const img = document.createElement("img");
+// //adding the poster path with the common source
+//         img.src = IMGPATH + movie.poster_path;
+
+//         document.body.appendChild(img);
+
+        document.body.appendChild(movieEl);
     });
+
+
+
+
+
     return respData;
 }
 //xtra: console.log(getMovies()); //returns a pending promise

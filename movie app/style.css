@@ -1,10 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&display=swap');
 
 *{
+    margin: 0;
     box-sizing: border-box;
 }
 
 body {
+    background-color: #181d44;
     font-family: "Poppins", sans-serif;
     margin: 0;
+}
+
+.movie{
+    background-color: #373B69;
+    border-radius: 3px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 2rem;
+    /* height: 400px; */
+    /* overflow: hidden; */
+
+}
+
+/* really a bad way of handling images...overflow happened as a result. Imagine images like water...they will fit to the shape and size of a container...you can't constrain themselves by default*/
+
+/* florin here does a jugaar that wont work irl */
+.movie img{
+    max-width: 100%;
+}
+
+.movie-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #eee;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem 1rem;
+}
+.movie-info h3{
+    margin: 0;
+}
+
+.movie-info span{
+    background-color: #22254b;
+    padding: 0.5rem 0.5rem;
 }
