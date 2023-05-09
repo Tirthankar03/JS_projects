@@ -51,7 +51,7 @@ main{
     margin: 2rem;
     /* height: 400px; */
     overflow: hidden;
-
+    position: relative;
 }
 
 /* really a bad way of handling images...overflow happened as a result. Imagine images like water...they will fit to the shape and size of a container...you can't constrain themselves by default*/
@@ -87,4 +87,27 @@ main{
 }
 .movie-info span.red{
     color: red;
+}
+
+.overview{
+    background: white;
+    position: absolute;
+    /* top: 0; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in;
+
+    max-height: 100%;
+    overflow: auto;
+}
+
+.overview h4{
+    margin-top: 0;
+}
+
+.movie:hover .overview{
+    transform: translateY(0);
 }
