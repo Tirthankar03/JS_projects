@@ -12,15 +12,17 @@ async function getMovies() {
     console.log(respData);
 
     respData.results.forEach(movie =>{
+        // destructuring the array
+        const {poster_path, title, vote_average} = movie;
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
 
         movieEl.innerHTML = `
-            <img src="${IMGPATH + movie.poster_path}" alt="${movie.title}" srcset="">
-            <div class="movie-info">
-                <h3>${movie.title}</h3>
-                <span>${movie.vote_average}</span>
-            </div>
+        <img src="${IMGPATH + poster_path}" alt="${title}" srcset="">
+        <div class="movie-info">
+            <h3>${title}</h3>
+            <span>${vote_average}</span>
+        </div>
 `;
 //         const img = document.createElement("img");
 // //adding the poster path with the common source
