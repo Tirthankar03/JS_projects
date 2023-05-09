@@ -4,6 +4,7 @@ const APIURL =
 const IMGPATH = "https://image.tmdb.org/t/p/w500/";
 //got this from the official themoviedb.org documentation
 
+const main = document.querySelector('main');
 
 async function getMovies() {
     const resp = await fetch(APIURL);
@@ -21,7 +22,7 @@ async function getMovies() {
         <img src="${IMGPATH + poster_path}" alt="${title}" srcset="">
         <div class="movie-info">
             <h3>${title}</h3>
-            <span>${vote_average}</span>
+            <span class="${getClassByRate(vote_average)}">${vote_average}</span>
         </div>
 `;
 //         const img = document.createElement("img");
@@ -30,15 +31,22 @@ async function getMovies() {
 
 //         document.body.appendChild(img);
 
-        document.body.appendChild(movieEl);
+        main.appendChild(movieEl);
     });
-
-
-
 
 
     return respData;
 }
 //xtra: console.log(getMovies()); //returns a pending promise
+
+function getClassByRate(vote) {
+    if (vote>=8) {
+        return 'green';
+    } else if (vote >=5){
+        return 'orange';
+    } else{
+        return 'red';
+    }
+};
 
 getMovies();

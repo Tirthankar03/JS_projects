@@ -10,18 +10,22 @@ body {
 
     font-family: "Poppins", sans-serif;
     margin: 0;
+
+}
+
+main{
     display: flex;
     flex-wrap: wrap ;
 }
 
 .movie{
     background-color: #373B69;
-    border-radius: 3px;
+    border-radius: 30px;
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
     width: 300px;
     margin: 2rem;
     /* height: 400px; */
-    /* overflow: hidden; */
+    overflow: hidden;
 
 }
 
@@ -47,4 +51,15 @@ body {
 .movie-info span{
     background-color: #22254b;
     padding: 0.5rem 0.5rem;
+    font-weight: bold;
+}
+
+.movie-info span.green{
+    color: green;
+}
+.movie-info span.orange{
+    color: orange;
+}
+.movie-info span.red{
+    color: red;
 }
