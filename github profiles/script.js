@@ -4,6 +4,8 @@ const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
+getUser("florinpop17");
+
 
 async function getUser(username) {
     const resp = await fetch(APIURL + username);
@@ -11,8 +13,32 @@ async function getUser(username) {
 
     createUserCard(respData);
 
-    // getRepos(username);
+    getRepos(username);
 }
+
+async function getRepos(username) {
+    const resp = await fetch(APIURL + username + "/repos");
+    const respData = await resp.json();
+
+    addReposToCard(respData);
+};
+
+function addReposToCard(repos) {
+    const reposEl = document.getElementById("repos");
+    repos
+        .sort((a,b) => b.stargazers_count - a.stargazers_count)
+        .slice(0,10)
+        .forEach((repo) => {
+            const repoEl = document.createElement("a");
+            repoEl.classList.add("repo");
+            repoEl.href = repo.html_url;
+            repoEl. target = "_blank";
+            repoEl.innerText = repo.name;
+            reposEl.appendChild(repoEl);
+        });
+};
+
+
 
 // if you had to add elements like you did in notes app
 // function createUserCard(user){
